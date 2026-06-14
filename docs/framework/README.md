@@ -33,6 +33,17 @@ These tiers govern gate decisions: what to do when a test fails.
 - Tier 2 / Important: warn and investigate. The run may continue under review, with quarantine actions for rows or alerts.
 - Tier 3 / Good practice: monitor and trend. No hard gate, but surface drift and SLA risk for follow-up.
 
+### FAIL vs WARN within Tier 2
+
+Tier 2 results use two distinct statuses:
+
+- **FAIL**: the pipeline action is quarantine or block. Record as FAIL and escalate before the next consumer-facing refresh.
+- **WARN**: the pipeline action is alert, flag, or review. Record as WARN and log for follow-up. The run continues.
+
+Use FAIL when the defect has already affected data visible to consumers or downstream systems. Use WARN when the defect is contained and the affected rows are isolated or flagged.
+
+**Escalation rule:** If a Tier 2 failure propagates to final output -- for example, a referential integrity orphan that produces null dimension values in a delivered report -- escalate to Tier 1 and block the refresh.
+
 ## Ownership and roles
 
 - Each test should have one accountable owner.

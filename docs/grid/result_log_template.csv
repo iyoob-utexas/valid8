@@ -1,0 +1,7 @@
+run_id,run_date,step,test_id,tier,category,test_name,status,detail,remediation_taken,dppf_ids
+YYYYMMDD-HHMMSS-<pipeline>,YYYY-MM-DD HH:MM,1,T001,Tier 1,Source Ingestion,Schema Presence,PASS,,, STR-001
+YYYYMMDD-HHMMSS-<pipeline>,YYYY-MM-DD HH:MM,1,T002,Tier 1,Source Ingestion,Data Type Conformance,PASS,,,STR-002
+YYYYMMDD-HHMMSS-<pipeline>,YYYY-MM-DD HH:MM,2,T003,Tier 1,Source Ingestion,Null Key Check,FAIL,<describe what was found>,<describe action taken>,STR-003
+YYYYMMDD-HHMMSS-<pipeline>,YYYY-MM-DD HH:MM,2,T004,Tier 1,Source Ingestion,Row Count Reconciliation,PASS,,,STAT-001
+YYYYMMDD-HHMMSS-<pipeline>,YYYY-MM-DD HH:MM,2,T005,Tier 1,Source Ingestion,Data Freshness,PASS,,,TMP-001
+YYYYMMDD-HHMMSS-<pipeline>,YYYY-MM-DD HH:MM,3,T008,Tier 1,Anomaly Detection,Period-over-Period KPI Change,BASELINE,Run 1 -- no prior period,,STAT-004

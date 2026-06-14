@@ -41,7 +41,10 @@ The master test checklist and supporting reference tables.
 | File | What it contains |
 |---|---|
 | `docs/grid/test-grid.md` | Full test checklist with tier, DAMA dimension, thresholds, tooling, owner, and DPPF IDs |
-| `docs/grid/summary-test-grid.md` | Run-level pass rate and gate status scorecard |
+| `docs/grid/summary-test-grid.md` | Run-level pass rate and gate status scorecard; dim_test schema; status value definitions |
+| `docs/grid/dim_test_template.csv` | Starter dim_test file -- copy and customize per project |
+| `docs/grid/result_log_template.csv` | Starter run log -- one row per test execution |
+| `docs/grid/summary_template.md` | Blank summary scorecard -- fill in after each run |
 | `docs/grid/lineage-map.md` | End-to-end lineage diagram, zone-to-zone validation table, lineage coverage checklist |
 | `docs/grid/raci-matrix.md` | Roles and accountability by test category |
 | `docs/grid/tier-dimension-reference.md` | Tier definitions and DAMA dimension glossary |

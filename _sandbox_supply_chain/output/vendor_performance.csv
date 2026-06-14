@@ -1,0 +1,9 @@
+vendor_id,vendor_name,category_x,total_orders,on_time_orders,avg_lead_time,total_spend,avg_cost_variance,on_time_rate
+V001,Apex Components Ltd,Electronics,4,2,14.5,40785.0,0.0,0.5
+V002,Summit Packaging Co,Packaging,2,3,5.0,2720.0,0.0,1.5
+V003,Global Raw Materials,Raw Materials,3,1,23.333333333333332,6125.0,0.0,0.3333333333333333
+V004,Nordic Precision Parts,Mechanical,3,1,29.333333333333332,6075.0,0.0,0.3333333333333333
+V005,FastShip Logistics,Logistics,2,2,1.0,900.0,0.0,1.0
+V006,Eastern Textiles,Textiles,2,0,21.5,4800.0,0.0,0.0
+V007,Pacific Semiconductors,Electronics,2,0,22.0,16465.0,0.0,0.0
+V008,,,1,1,13.0,6250.0,0.0,1.0

@@ -17,6 +17,33 @@ When starting a new project, use `docs/process/testing-strategy.md` to scope the
 
 ---
 
+## Python / pandas quick-start
+
+The test grid's "Tool-Agnostic Approach" column describes what to check. This section maps the most common check categories to a Python / pandas pattern. These are not production-ready implementations -- they show the shape of each assertion so you can build from them.
+
+| Check | pandas pattern |
+|---|---|
+| Schema presence | `assert set(expected_cols) == set(df.columns)` |
+| Data type conformance | `pd.to_numeric(df[col], errors='coerce').isna().sum() == 0` |
+| Null key check | `df[key_col].isna().sum() == 0` |
+| Row count reconciliation | `len(source_df) == len(landing_df)` |
+| Duplicate detection | `df[key_col].duplicated().sum() == 0` |
+| Referential integrity | `df[~df[fk_col].isin(dim[pk_col])].shape[0] == 0` |
+| Transformation logic | `(df['derived'] - (df['a'] * df['b'])).abs().max() < tolerance` |
+| Aggregation tie-out | `abs(detail_df[val].sum() - agg_df[val].sum()) < tolerance` |
+| KPI range validation | `df[kpi_col].between(lower, upper).all()` |
+| Cross-validation tie-out | `abs(source_total - output_total) / source_total < tolerance` |
+| Future-date check | `(pd.to_datetime(df[date_col]) <= load_date + pd.Timedelta(days=buffer)).all()` |
+| Period cutoff check | `pd.to_datetime(df[date_col]).between(period_start, period_end).all()` |
+| MoM change | `abs((curr - prior) / prior) <= threshold` |
+| Null rate monitoring | `df[col].isna().mean() <= null_rate_threshold` |
+| Paired-value invariant | `abs(df['debit_col'].sum() - df['credit_col'].sum()) < tolerance` |
+| Missing dimension member | `set(prior_df[dim_col].unique()) - set(curr_df[dim_col].unique())` |
+
+For dbt environments, the equivalent tests are `not_null`, `unique`, `relationships`, `accepted_values`, and custom `dbt test` blocks. For Great Expectations, use `expect_column_values_to_not_be_null`, `expect_column_values_to_be_unique`, and `expect_table_row_count_to_equal`.
+
+---
+
 ## For AI agents
 
 ### What this repo contains

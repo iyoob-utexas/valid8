@@ -1,0 +1,24 @@
+test_id,tier,category,test_name,dama_dimension,dppf_ids,threshold,owner,lifecycle_stage,in_scope
+T001,Tier 1,Source Ingestion,Schema Presence,Validity,STR-001,Zero missing or extra columns,Data Engineer,CI; Production monitoring,TRUE
+T002,Tier 1,Source Ingestion,Data Type Conformance,Validity,STR-002,Zero type mismatches on numeric and date fields,Data Engineer,CI; Production monitoring,TRUE
+T003,Tier 1,Source Ingestion,Null Key Check,Completeness,STR-003,Zero nulls on all key columns,Data Engineer,CI; Production monitoring,TRUE
+T004,Tier 1,Source Ingestion,Row Count Reconciliation,Completeness,STAT-001,Source count equals landing count,Data Engineer,Production monitoring,TRUE
+T005,Tier 1,Source Ingestion,Data Freshness,Timeliness,TMP-001,Latest record within SLA window (set threshold),Data Engineer,Production monitoring,TRUE
+T006,Tier 2,Source Ingestion,Future-Date Check,Validity,STR-009,No date field value more than N days after load date (set N),Data Engineer,Production monitoring,TRUE
+T007,Tier 1,Source Ingestion,Period Cutoff Check,Timeliness,TMP-001,All records fall within period_start to period_end,Data Engineer,Production monitoring,FALSE
+T008,Tier 1,Anomaly Detection,Period-over-Period Volume Change,Consistency,STAT-004,MoM volume change within threshold (set threshold),Data Analyst,Production monitoring,TRUE
+T009,Tier 1,Anomaly Detection,Period-over-Period KPI Change,Consistency,STAT-004,MoM KPI change within threshold (set threshold),Data Analyst,Production monitoring,TRUE
+T010,Tier 1,Anomaly Detection,Sudden Zero or Null in KPI,Completeness,STAT-007,KPI non-null and non-zero when populated in prior period,Data Analyst,Production monitoring,TRUE
+T011,Tier 2,Anomaly Detection,Concentration Check,Consistency,STAT-015,No member exceeds X% of total when historically below Y% (set thresholds),Data Analyst,Production monitoring,FALSE
+T012,Tier 2,Anomaly Detection,Missing Expected Dimension Member,Completeness,STAT-006,All dimension members active in prior N periods present in current period,Data Analyst,Production monitoring,FALSE
+T013,Tier 1,Pipeline Processing,Duplicate Detection,Uniqueness,STR-004,Zero duplicate values on key column(s),Data Engineer,CI; Production monitoring,TRUE
+T014,Tier 2,Pipeline Processing,Referential Integrity,Integrity,SEM-001,Zero orphan foreign keys; escalate to Tier 1 if orphans propagate to output,Data Engineer,CI; Production monitoring,TRUE
+T015,Tier 1,Pipeline Processing,Transformation Logic,Accuracy,SEM-002,All derived fields match expected calculation within tolerance,Data Engineer,CI,TRUE
+T016,Tier 2,Pipeline Processing,Aggregation Accuracy,Consistency,SEM-007,Detail sum equals aggregate total within tolerance,Data Engineer,CI; Production monitoring,TRUE
+T017,Tier 1,Output Validation,Output Invariant / Business Rule,Accuracy,SEM-014,Domain invariant holds on every row of final output (define invariant),Data Engineer,Production monitoring,FALSE
+T018,Tier 1,Output Validation,Paired-Value Invariant,Accuracy,SEM-014,Paired values net to zero or expected constant within tolerance,Data Engineer,Production monitoring,FALSE
+T019,Tier 2,Output Validation,KPI Range Validation,Accuracy,STR-009,All KPI columns within defined lower and upper bounds,Data Engineer,Production monitoring,TRUE
+T020,Tier 1,Cross-Validation,Source vs Output Total,Accuracy,SEM-004,Source total equals output total within tolerance (set tolerance),Data Analyst,Production monitoring,TRUE
+T021,Tier 3,Traditional Software,Unit Tests,Validity,OPS-001,All unit tests pass before deployment,Data Engineer,Development; CI,TRUE
+T022,Tier 3,Traditional Software,Integration Tests,Integrity,OPS-001,Full synthetic dataset passes all Tier 1 checks end to end,Data Engineer,CI,TRUE
+T023,Tier 3,Traditional Software,Regression Tests,Consistency,OPS-001,Zero regressions on any prior passing test case,Data Engineer,CI,TRUE

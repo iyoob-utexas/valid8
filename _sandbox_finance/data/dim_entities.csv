@@ -1,0 +1,5 @@
+entity_id,entity_name,region,is_intercompany
+E01,HQ Corp,North America,N
+E02,EMEA Ltd,Europe,N
+E03,APAC Pte,Asia Pacific,N
+E04,IC Holding,North America,Y

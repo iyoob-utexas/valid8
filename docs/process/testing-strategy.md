@@ -23,10 +23,51 @@ The DPPF methodology (Phases 1 through 7 below) is strategic and runs once per e
 4. Define acceptance criteria
    - Turn guidance into explicit conditions for success.
    - Capture thresholds, expected behaviors, and remediation steps.
+   - Use the threshold starter table below when no historical data is available to calibrate from.
 
 5. Maintain traceability
    - Document which tests apply to which artifact.
    - Track known limitations and open issues.
+
+## Threshold calibration
+
+All anomaly thresholds must be explicit before a test can produce a meaningful gate decision. The test grid uses "X%" as a placeholder throughout. Replace every placeholder with a project-specific value before the first production run.
+
+### Starter thresholds (use when no prior history is available)
+
+These are conservative starting points. Tighten them after 3 to 6 periods of clean data.
+
+| Check type | Starter threshold | Tighten after | Notes |
+|---|---|---|---|
+| MoM volume / row count change | ±20% | 3 clean periods | Widen for known seasonal pipelines |
+| MoM key metric change (revenue, spend, cost) | ±25% | 6 clean periods | Tighten to ±10-15% once baseline is stable |
+| QoQ key metric change | ±30% | 4 clean quarters | |
+| Null rate on optional fields | <5% | Establish per-field baseline | Key fields must be 0% |
+| Null rate on key / required fields | 0% | Never relax | Zero tolerance |
+| Duplicate rate | 0% | Never relax | Zero tolerance |
+| Data freshness SLA | 24h for daily pipelines; 7 days for weekly; 1 business day after period close for batch | Confirm with stakeholders | |
+| Cross-validation / tie-out tolerance | 0.01% for financial data; 0.1% for operational data | Confirm with stakeholders | Tighter for regulated outputs |
+| KPI rate bounds | [0, 1] for rate and ratio metrics; [-1, 1] for margin and variance metrics | Per business definition | Values outside bounds indicate a calculation defect |
+| Seasonal breach | ±2 standard deviations from same-period prior-year average | After 2+ years of history | Not applicable on Run 1 |
+
+### How to calibrate from history
+
+Once 3 or more clean periods are available:
+
+1. Compute the mean and standard deviation for each monitored metric across the baseline periods.
+2. Set the threshold at mean ± 2 standard deviations, or at the 5th and 95th percentile of observed values.
+3. Document the calibration date, the number of periods used, and the resulting threshold in the project test plan.
+4. Review and recalibrate annually or after any significant pipeline or business change.
+
+### Operational KPI thresholds
+
+For pipelines that produce service-level or performance KPIs (on-time rates, fill rates, lead times, error rates, SLA compliance), apply the same calibration approach. Define:
+
+- A **floor threshold** below which a value triggers a Tier 2 alert (e.g., on-time delivery rate below 80%)
+- A **range bound** that the KPI must always satisfy regardless of history (e.g., on-time rate cannot exceed 100%)
+- A **drift threshold** for period-over-period change in the KPI (e.g., on-time rate drops more than 15 percentage points MoM)
+
+Document all operational KPI thresholds in the project-specific test grid alongside the standard data quality thresholds.
 
 ## Continuous improvement
 

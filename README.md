@@ -68,7 +68,10 @@ Use the scoring rubric at the bottom of this file. The short version: `READY` re
 - `docs/framework/dppf.md` — the Data Pipeline Penetration Testing Framework for adversarial reliability validation
 - `docs/grid/README.md` — how to use the master checklist
 - `docs/grid/test-grid.md` — the full test checklist matrix
-- `docs/grid/summary-test-grid.md` — summary pass-rate and gate scorecard
+- `docs/grid/summary-test-grid.md` — summary pass-rate and gate scorecard; dim_test schema; status value definitions
+- `docs/grid/dim_test_template.csv` — starter dim_test dimension; copy and customize per project
+- `docs/grid/result_log_template.csv` — starter run log; one row per test execution
+- `docs/grid/summary_template.md` — blank summary scorecard; fill in after each run
 - `docs/tests/cross-validation-suite.md` — cross-validation suite guidance
 - `docs/tests/anomaly-and-drift.md` — anomaly detection and drift guidance
 - `docs/tests/metadata-and-governance.md` — metadata, lineage, and governance tests
@@ -130,7 +133,7 @@ Use this rubric to score test success against all relevant checks and make gate 
 - `tier1_failures` — count of Tier 1 failures.
 - `tier2_warnings` — count of Tier 2 review flags or warnings.
 - `tier3_issues` — count of monitored drift or anomaly alerts.
-- `overall_score` — weighted score based on tier severity.
+- `overall_score` — weighted score based on tier severity. See formula below.
 
 ### Example scoring formula
 
@@ -142,6 +145,8 @@ Use this rubric to score test success against all relevant checks and make gate 
 - Tier 3 issue = 0 points
 
 `overall_score = (tier1_pass*5 + tier2_pass*2 + tier3_pass*1) / maximum_possible_score`
+
+`maximum_possible_score` is the sum of tier weights for all tests in the project's scoped test list -- not just the tests that ran in this cycle, and not the full master grid. Tests explicitly scoped out of the project do not count toward the denominator.
 
 ### Recommended thresholds
 
