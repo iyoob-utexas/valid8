@@ -1,9 +1,0 @@
-product_id,product_name,category,standard_cost,lead_time_days_target
-P001,Control Board A,Electronics,125.00,14
-P002,Packaging Box L,Packaging,2.50,5
-P003,Steel Rod 10mm,Raw Materials,8.75,21
-P004,Precision Gear Set,Mechanical,45.00,28
-P005,Delivery Service,Logistics,15.00,1
-P006,Cotton Fabric Roll,Textiles,12.00,14
-P007,Microchip Series X,Electronics,89.00,21
-P008,Packaging Box M,Packaging,1.80,5
