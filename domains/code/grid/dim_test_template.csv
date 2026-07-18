@@ -1,0 +1,16 @@
+test_id,tier,domain,test_name,quality_characteristic,catalog_ids,threshold,owner,lifecycle_stage,in_scope
+C001,Tier 1,Correctness and logic,Null and Undefined Safety,Functional suitability,COR-002,Zero unhandled null/undefined dereference paths,Author,Review; CI,TRUE
+C002,Tier 2,Correctness and logic,Boundary Value Handling,Functional suitability,COR-001,Boundary tests exist and pass for every bounded-domain function,Author,Authoring; Review; CI,TRUE
+C003,Tier 2,Structure and style,Formatter and Linter Conformance,Maintainability,STY-003,Zero linter errors; zero unformatted files,Author,Authoring; CI,TRUE
+C004,Tier 2,Structure and style,Cyclomatic Complexity Bound,Maintainability,STY-004,Complexity <= 10 per function (set threshold),Author,Review; CI,TRUE
+C005,Tier 1,Security,Injection Input Sanitization,Security,SEC-001,Zero high/critical injection findings from SAST,Security champion,Authoring; Review; CI,TRUE
+C006,Tier 1,Security,Secrets-in-Code Absence,Security,SEC-004,Zero secrets detected in repo history or working tree,Security champion,Authoring; Review; CI,TRUE
+C007,Tier 1,Security,Dependency Vulnerability Scan,Security,SEC-011,Zero unresolved critical/high CVEs,Security champion,CI; Pre-deployment,TRUE
+C008,Tier 1,Architecture and design,API Backward Compatibility,Compatibility,ARC-012,Zero unversioned breaking changes to public API,Tech lead,Review; Pre-deployment,FALSE
+C009,Tier 2,Testing and coverage,Line and Branch Coverage Threshold,Maintainability,TST-004,Line coverage >= 80%; branch coverage >= 70% on changed code (set threshold),Author,CI,TRUE
+C010,Tier 1,Testing and coverage,CI Gate Enforcement,Functional suitability,TST-012,100% of merges require a passing CI run,Author,CI,TRUE
+C011,Tier 1,Performance and scalability,Memory Leak Absence,Performance efficiency,PERF-005,Zero memory growth beyond baseline under sustained load test,SRE / on-call,CI; Pre-deployment; Production,FALSE
+C012,Tier 2,Performance and scalability,N+1 Query Prevention,Performance efficiency,PERF-003,Zero N+1 query patterns detected,SRE / on-call,Review; CI,TRUE
+C013,Tier 1,Reliability and operability,Timeout Enforcement,Reliability,REL-002,100% of network calls have an explicit timeout,SRE / on-call,Review; CI,TRUE
+C014,Tier 1,Reliability and operability,Safe Deployment and Rollback,Reliability,REL-009,Rollback completes within N minutes without a code change (set N),SRE / on-call,Pre-deployment; Production,FALSE
+C015,Tier 1,Adversarial,Dependency Tampering Simulation,Security,ADV-003,100% of dependencies verified against a lockfile hash before build,Security champion,CI; Pre-deployment,FALSE

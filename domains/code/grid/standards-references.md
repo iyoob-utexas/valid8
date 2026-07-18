@@ -1,0 +1,22 @@
+# Standards and References
+
+This file documents the reference standards used by the framework.
+
+| Standard / Source | What it is | How this domain uses it | Reference |
+|---|---|---|---|
+| OWASP Top 10 (2021) | The Open Web Application Security Project's ranked list of the ten most critical web application security risk categories. | Primary structure for the Security domain catalog (`domains/code/tests/security.md`) and the SEC-* test IDs. | owasp.org/Top10 |
+| CWE Top 25 | MITRE's list of the most dangerous software weaknesses by prevalence and severity. | Cross-referenced alongside OWASP entries in the Security and Adversarial catalogs for precise weakness identification. | cwe.mitre.org/top25 |
+| SOLID principles | Five object-oriented design principles: single responsibility, open/closed, Liskov substitution, interface segregation, dependency inversion. | Source of the Architecture and design domain catalog (`domains/code/tests/architecture-and-design.md`), ARC-001 through ARC-005 directly. | Robert C. Martin, "Agile Software Development" |
+| Clean Code | Robert C. Martin's practice guide on naming, function size, comments, and readability. | Backs the Structure and style domain catalog and its naming, length, and comment guidance. | Robert C. Martin, "Clean Code" |
+| ISO/IEC 25010:2011 (SQuaRE) | International standard defining eight software product quality characteristics. | Formal backing for the Standards column across all eight test catalogs; citable for regulated or audit-driven clients. See `domains/code/grid/tier-dimension-reference.md`. | iso.org/standard/35733.html |
+| Testing pyramid (M. Cohn) | Testing strategy: many fast unit tests at the base, fewer integration tests, and a thin layer of end-to-end tests at the top. | Shapes the Testing and coverage domain catalog and the TST-001/002/003 test-type split. | Agile testing literature |
+| Google engineering practices | Google's published code review, testing, and CI standards (readability, small changes, CI enforcement). | Referenced in the Testing and coverage and Reliability domains for CI gating and review practice. | google.github.io/eng-practices |
+| Semantic Versioning (SemVer) | Versioning scheme (MAJOR.MINOR.PATCH) for communicating the impact of a released change. | Backs API backward-compatibility testing (ARC-012) and release-gate discipline. | semver.org |
+| Conventional Commits | A commit message convention that makes change intent (feat, fix, breaking) machine-parseable. | Referenced alongside SemVer for release automation and changelog generation. | conventionalcommits.org |
+| Reference tooling | ESLint, Prettier, Ruff, SonarQube, CodeQL, Semgrep, Snyk, Dependabot, npm audit, pytest-cov, Jest, Stryker, mutmut, k6, JMeter. De facto static analysis, security scanning, coverage, and load testing implementations. | The tool-agnostic approaches in the grid map to these; delivered per the client's actual stack. | eslint.org; sonarqube.org; codeql.github.com; semgrep.dev; snyk.io; stryker-mutator.io; k6.io |
+| CVSS (Common Vulnerability Scoring System) | Standardized method for scoring the severity of security vulnerabilities on base, temporal, and environmental metrics. | Inspiration for the four-factor severity scoring model (blast radius, detectability, code criticality, recoverability) in `domains/code/framework/README.md`. | first.org/cvss |
+| PTES (Penetration Testing Execution Standard) | Methodology for structuring a penetration testing engagement: reconnaissance, threat modeling, exploitation, post-exploitation, reporting. | Basis for the engagement methodology in `domains/code/process/testing-strategy.md`, adapted from the data domain's use of the same standard. | pentest-standard.org |
+| Chaos engineering | Practice of deliberately injecting faults, dependency failures, and hostile input to validate system resilience. | Source of the Adversarial domain test catalog in `domains/code/tests/adversarial.md`. | Chaos Engineering (Rosenthal et al.); adapted to software delivery pipelines |
+| SLSA (Supply-chain Levels for Software Artifacts) | Framework for securing the software supply chain against tampering, from source through build to deployment. | Referenced in the Adversarial domain's build-pipeline and dependency-tampering tests (ADV-003, ADV-007, ADV-008). | slsa.dev |
+
+> Note: These are reference points, not a single mandated certification. ISO materials are licensed; cite them, do not redistribute the full texts.

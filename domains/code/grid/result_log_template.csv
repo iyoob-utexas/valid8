@@ -1,0 +1,8 @@
+run_id,run_date,step,test_id,tier,domain,test_name,status,detail,remediation_taken,catalog_ids
+YYYYMMDD-HHMMSS-<repo-or-pr>,YYYY-MM-DD HH:MM,1,C001,Tier 1,Correctness and logic,Null and Undefined Safety,PASS,,,COR-002
+YYYYMMDD-HHMMSS-<repo-or-pr>,YYYY-MM-DD HH:MM,1,C003,Tier 2,Structure and style,Formatter and Linter Conformance,PASS,,,STY-003
+YYYYMMDD-HHMMSS-<repo-or-pr>,YYYY-MM-DD HH:MM,2,C005,Tier 1,Security,Injection Input Sanitization,FAIL,<describe what was found>,<describe action taken>,SEC-001
+YYYYMMDD-HHMMSS-<repo-or-pr>,YYYY-MM-DD HH:MM,2,C007,Tier 1,Security,Dependency Vulnerability Scan,PASS,,,SEC-011
+YYYYMMDD-HHMMSS-<repo-or-pr>,YYYY-MM-DD HH:MM,3,C009,Tier 2,Testing and coverage,Line and Branch Coverage Threshold,WARN,Coverage at 76%; threshold is 80%,Ticket filed to add tests next sprint,TST-004
+YYYYMMDD-HHMMSS-<repo-or-pr>,YYYY-MM-DD HH:MM,3,C010,Tier 1,Testing and coverage,CI Gate Enforcement,PASS,,,TST-012
+YYYYMMDD-HHMMSS-<repo-or-pr>,YYYY-MM-DD HH:MM,4,C012,Tier 2,Performance and scalability,N+1 Query Prevention,BASELINE,Run 1 -- no prior benchmark,,PERF-003
